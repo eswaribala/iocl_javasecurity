@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>captchademo</display-name>
+  <display-name>RestJWTTokenAPI</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,28 +9,18 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <session-config>
-    <session-timeout>
-      30
-    </session-timeout>
-  </session-config>
-  
   <servlet>
-    <servlet-name>BotDetect Captcha</servlet-name>
-    <servlet-class>com.captcha.botdetect.web.servlet.CaptchaServlet</servlet-class>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>com.iocl.services</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+   
   </servlet>
   <servlet-mapping>
-    <servlet-name>BotDetect Captcha</servlet-name>
-    <url-pattern>/botdetectcaptcha</url-pattern>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
-    <servlet-name>CaptchaTagAction</servlet-name>
-    <servlet-class>com.iocl.controllers.CaptchaTagAction</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>CaptchaTagAction</servlet-name>
-    <url-pattern>/captchaTagAction</url-pattern>
-  </servlet-mapping>
-  
 </web-app>
